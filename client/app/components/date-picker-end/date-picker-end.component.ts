@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { NgModel, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-date-picker-end',
@@ -7,17 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatePickerEndComponent implements OnInit {
   maxDate: Date;
-  divToChange = document.getElementById('form-control');
+  public date: Date;
+  public myGroup;
+  public myForm: FormGroup;
+
+  // myForm = new FormGroup({
+  //   myDate: new FormControl()
+  // });
+
+  //divToChange = document.getElementById('form-control');
   onDateSelected() {
+    console.log(this.date);
     return "#e5e5e5";
   }
+  // @Output() dateSend: EventEmitter<any> = new EventEmitter<any>();
+  onSubmit() {
+    console.log(this.myForm.value);
+    //this.dateSend.emit(val);
+  }
 
-
-  constructor() {
-    this.maxDate= new Date();
+  constructor(private _fb: FormBuilder) {
+    this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate());
-   }
+  }
 
   ngOnInit() {
+
+
+    this.myForm = this._fb.group({
+      myDate: ['', <any>Validators.required]
+    });
+
   }
+
 }
