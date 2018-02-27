@@ -35,6 +35,7 @@ export class DatePickerEndComponent implements OnInit {
 
   ngOnInit() {
 
+    
 
     this.myForm = this._fb.group({
       myDate: ['', <any>Validators.required]
