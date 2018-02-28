@@ -9,6 +9,7 @@ import { NgModel, FormGroup, FormControl, FormBuilder, Validators } from '@angul
 })
 export class DatePickerEndComponent implements OnInit {
   maxDate: Date;
+  minDate: Date;
   public date: Date;
   public myGroup;
   public myForm: FormGroup;
@@ -31,6 +32,8 @@ export class DatePickerEndComponent implements OnInit {
   constructor(private _fb: FormBuilder) {
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate());
+    this.minDate = new Date();
+    this.minDate.setDate(this.minDate.getDate()-60);
   }
 
   ngOnInit() {
